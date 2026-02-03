@@ -21,11 +21,9 @@ router.get("/", async (req, res) => {
 
 // Update student
 router.put("/:id", async (req, res) => {
-  const student = await Student.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true }
-  );
+  const student = await Student.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
   student
     ? res.status(200).json(student)
     : res.status(404).json({ message: "Student not found" });
@@ -39,5 +37,4 @@ router.delete("/:id", async (req, res) => {
     : res.status(404).json({ message: "Student not found" });
 });
 
-// 🔴 THIS LINE IS MANDATORY
 export default router;

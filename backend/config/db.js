@@ -1,18 +1,13 @@
 import mongoose from "mongoose";
 
-const studentSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  age: {
-    type: Number,
-    required: true
-  },
-  grade: {
-    type: String,
-    required: true
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB Atlas Connected");
+  } catch (error) {
+    console.error("MongoDB connection failed", error);
+    process.exit(1);
   }
-}, { timestamps: true });
+};
 
-export default mongoose.model("Student", studentSchema);
+export default connectDB;
