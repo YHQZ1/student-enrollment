@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/students": {
-        target: "http://localhost:3000",
+        target: "http://172.16.19.129",
         changeOrigin: true,
         secure: false,
       },
